@@ -5,22 +5,19 @@ class HighOrderComponent extends Component {
     constructor(props) {
         super(props);
         this.state = props.initState
-        const dispatch = (reducer, sideEffect) => {
-            if(reducer){
-                this.setState(reducer) 
-            }
-            if(sideEffect){
-                sideEffect(this.state).then((r) => this.setState(r))
-            }
-        }
-
-        const enactionate = (f,side) =>
-            (...args) => {
-            const curriedF = (f) ? (s) => f(s,...args) : null;
-            dispatch(curriedF, side)
-        }  
         
-        this.actions = props.makeActions(enactionate)
+        const makeAction = (a) => 
+            (...args) => this.setState( s =>  a(s,...args))
+
+        const enactionate = (actions) => {
+            const newActions = {}  
+            for (var key in actions) {
+                newActions[key] = makeAction(actions[key])
+            }
+            return newActions;
+        } 
+        
+        this.actions = enactionate(props.actions);    
     }
 
     render() {
@@ -29,6 +26,6 @@ class HighOrderComponent extends Component {
 }
 
 
-export default function HOC(initState, makeActions, render){
-    return <HighOrderComponent initState={initState} makeActions={makeActions} render={render} />
+export default function HOC(initState, render, actions ){
+    return <HighOrderComponent initState={initState} actions={actions} render={render} />
 }
