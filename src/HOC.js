@@ -5,7 +5,7 @@ class HighOrderComponent extends Component {
     constructor(props) {
         super(props);
         this.state = props.initState
-        this.dispach = (reducer, sideEffect) => {
+        const dispatch = (reducer, sideEffect) => {
             if(reducer){
                 this.setState(reducer) 
             }
@@ -13,14 +13,22 @@ class HighOrderComponent extends Component {
                 sideEffect(this.state).then((r) => this.setState(r))
             }
         }
+
+        const enactionate = (f,side) =>
+            (...args) => {
+            const curriedF = (f) ? (s) => f(s,...args) : null;
+            dispatch(curriedF, side)
+        }  
+        
+        this.actions = props.makeActions(enactionate)
     }
 
     render() {
-        return this.props.render(this.state, this.dispach);
+        return this.props.render(this.state, this.actions);
     }
 }
 
 
-export default function HOC(initState, render){
-    return <HighOrderComponent initState={initState} render={render} />
+export default function HOC(initState, makeActions, render){
+    return <HighOrderComponent initState={initState} makeActions={makeActions} render={render} />
 }

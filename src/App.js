@@ -4,7 +4,7 @@ import HOC from './HOC';
 
 export default class App extends Component {
   render() {
-    return HOC({value:1}, render)
+    return HOC({value:1}, makeActions, render)
   }
 }
 
@@ -18,7 +18,7 @@ function decrement(s){
    return s
 }
 
-const increaseBy = (delta) => (s) => {
+const increaseBy = (s,delta) => {
    s.value += delta;
    return s
 }
@@ -27,13 +27,22 @@ const AsyncSideEffect = (s) => {
   return promiseDelay(1000).then( () => increment )
 }
 
-function render(state, dispatch){
+function makeActions(enactionate){
+  return {
+    increment: enactionate(increment),
+    decrement: enactionate(decrement),
+    increaseBy: enactionate(increaseBy),
+    async: enactionate(null, AsyncSideEffect)
+  }
+}
+
+function render(state, actions){
   return <div className="App">
     <p>HOC</p>
-    <button onClick={() => dispatch(increment)} > UP </button>
-    <button onClick={() => dispatch(decrement)} > DOWN </button>
-    <button onClick={() => dispatch(increaseBy(2))} > UP TWO </button>
-    <button onClick={() => dispatch(null, AsyncSideEffect)} > ASYNC </button>
+    <button onClick={actions.increment} > UP </button>
+    <button onClick={actions.decrement} > DOWN </button>
+    <button onClick={() => actions.increaseBy(2)} > UP TWO </button>
+    <button onClick={actions.async} > ASYNC </button>
     <p>{state.value}</p> 
   </div>
 }
