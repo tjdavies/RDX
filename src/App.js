@@ -20,7 +20,7 @@ const actions = {
 
 function render(state, actions){
   return <div className="App">
-    <p>HOC</p>
+    <p>RDX</p>
     <button onClick={actions.increment} > UP </button>
     <button onClick={actions.decrement} > DOWN </button>
     <button onClick={() => actions.increaseBy(2)} > UP TWO </button>

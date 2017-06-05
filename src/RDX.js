@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class RDXClass extends Component {
-
     constructor(props) {
         super(props);
         this.state = props.initState
@@ -31,7 +30,6 @@ class RDXClass extends Component {
     }
 }
 
-
 export default function RDX(initState, render, actions ){
     return <RDXClass initState={initState} actions={actions} render={render} />
 }
@@ -39,12 +37,7 @@ export default function RDX(initState, render, actions ){
 function Action(s, ...args){
     return {
         map: f => Action( {effects:s.effects, state:f(s.state, ...args)} ) ,
-        addEffect: e => Action(addEffect(s,e)) ,
+        addEffect: e => Action({effects:[...s.effects, e], state:s.state}) ,
         fold: () => s
     }
-}
-
-function addEffect(s, e){
-    s.effects.push(e)
-    return {state:s.state, effects:s.effects}
 }
