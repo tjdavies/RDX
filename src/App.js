@@ -29,4 +29,4 @@ function render(state, actions){
   </div>
 }
 
-export const App = RDX( initState, render, actions )
+export const App = RDX(initState, render, actions )
