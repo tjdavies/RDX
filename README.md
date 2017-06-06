@@ -45,7 +45,6 @@ const actions = {
 }
 ```
 
-
 #### Whats with the map and addEffect
 
 actions are effectivly function that take and return 
