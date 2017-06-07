@@ -15,7 +15,8 @@ const actions = {
   increment: a => a.map(s => ({ value:s.value + 1 })),
   decrement: a => a.map(s => ({ value:s.value - 1 })),
   increaseBy: a => a.map((s, delta) => ({value:s.value + delta })),
-  async: a => a.addEffect(AsyncSideEffect)
+  async: a => a.addEffect(AsyncSideEffect),
+  asyncTwo: a => a.chain(actions.decrement).chain(actions.async),
 }
 
 function render(state, actions){
@@ -25,6 +26,7 @@ function render(state, actions){
     <button onClick={actions.decrement} > DOWN </button>
     <button onClick={() => actions.increaseBy(2)} > UP TWO </button>
     <button onClick={actions.async} > ASYC </button>
+    <button onClick={actions.asyncTwo}> CHAINED ASYNC </button>
     <p>{state.value}</p> 
   </div>
 }

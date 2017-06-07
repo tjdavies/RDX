@@ -36,8 +36,9 @@ export default function RDX(initState, render, actions ){
 
 function Action(s, ...args){
     return {
-        map: f => Action( {effects:s.effects, state:f(s.state, ...args)} ) ,
-        addEffect: e => Action({effects:[...s.effects, e], state:s.state}) ,
+        map: f => Action( {effects:s.effects, state:f(s.state, ...args)} ),
+        addEffect: e => Action({effects:[...s.effects, e], state:s.state}),
+        chain: a => a(Action(s), ...args),
         fold: () => s
     }
 }
