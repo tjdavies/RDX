@@ -3,18 +3,20 @@ import './App.css';
 import Delay from './Delay';
 import RDX from './RDX';
 
-const initState = {
-  value:1
-}
+//reducer
+const changeValue = delta => s => ({value:s.value + delta })
 
+//side effect
 const AsyncSideEffect = (s, actions) => {
   return Delay(1000).then( actions.increment )
 }
 
+//actions
 const actions = {
-  increment: a => a.map(s => ({ value:s.value + 1 })),
-  decrement: a => a.map(s => ({ value:s.value - 1 })),
-  increaseBy: a => a.map((s, delta) => ({value:s.value + delta })),
+  initalise: a => a.map(s => ({value:1})),
+  increment: a => a.map(changeValue(1)),
+  decrement: a => a.map(changeValue(-1)),
+  increaseBy: (a, delta) => a.map(changeValue(delta)),
   async: a => a.addEffect(AsyncSideEffect),
   asyncTwo: a => a.chain(actions.decrement).chain(actions.async),
 }
@@ -31,4 +33,4 @@ function render(state, actions){
   </div>
 }
 
-export const App = RDX(initState, render, actions )
+export const App = RDX(render, actions )
