@@ -55,9 +55,11 @@ actions are effectivly function that take and return
 
 In its raw form working with this structure is a bit clumsy. Wrapping it in a helper takes the pain away but still keeps it pure. 
 
-##Examples
+## Examples
 
-Counter  [![Edit RDX - counter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mw7m43Nk3)
+##### Counter 
+[![Edit RDX - counter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mw7m43Nk3)
 
-Reddit client  [![Edit RDX - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/L9jl809yp)
+##### Reddit client 
+[![Edit RDX - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/L9jl809yp)
 
