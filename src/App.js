@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Delay from './Delay';
-import RDX from './RDX';
+import RDXReact from './RDXReact';
 
 //reducer
 const changeValue = delta => s => ({value:s.value + delta })
@@ -33,4 +33,4 @@ function render(state, actions){
   </div>
 }
 
-export const App = RDX(render, actions )
+export const App = RDXReact(render, actions )

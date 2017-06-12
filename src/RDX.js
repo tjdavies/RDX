@@ -1,44 +1,22 @@
-import React, { Component } from 'react';
-
-class RDXClass extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
+export default function RDX(rawActions, update){
+    let state = {};
+    let actions = {};
 
     const makeAction = a => (...args) => {
       const response = a(
-        Action({ state: this.state, effects: [] }),
+        Action({ state, effects: [] }),
         ...args,
       ).fold();
-      this.setState(response.state);
-      response.effects.map(e => e(response.state, this.actions));
+      state = response.state
+      response.effects.map(e => e(response.state, actions));
+      update(state, actions)
     };
 
-    const enactionate = actions => {
-      const newActions = {};
-      for (var key in actions) {
-        newActions[key] = makeAction(actions[key]);
-      }
-      return newActions;
-    };
-
-    this.actions = enactionate(props.actions);
-  }
-
-  componentWillMount() {
-    if (this.actions['initalise']) {
-      this.actions['initalise']();
+    for (var key in rawActions) {
+        actions[key] = makeAction(rawActions[key]);
     }
-  }
 
-  render() {
-    return this.props.render(this.state, this.actions);
-  }
-}
-
-export default function RDX(render, actions) {
-  return <RDXClass actions={actions} render={render} />;
+    return actions;
 }
 
 function Action(s) {
@@ -46,10 +24,12 @@ function Action(s) {
     map: f => Action({ effects: s.effects, state: f(s.state) }),
     addEffect: e => Action({ effects: [...s.effects, e], state: s.state }),
     chain: (a, ...args) => a(Action(s), ...args),
-    log: a => {
-      console.log(s);
-      return a;
-    },
+    log,
     fold: () => s,
   };
+}
+
+export function log(l) {
+    console.log(l);
+    return l;
 }
