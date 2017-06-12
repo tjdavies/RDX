@@ -21,16 +21,16 @@ const actions = {
   asyncTwo: a => a.chain(actions.decrement).chain(actions.async),
 }
 
-function render(state, actions){
+function view(state, actions){
   return <div className="App">
     <p>RDX</p>
     <button onClick={actions.increment} > UP </button>
     <button onClick={actions.decrement} > DOWN </button>
     <button onClick={() => actions.increaseBy(2)} > UP TWO </button>
     <button onClick={actions.async} > ASYC </button>
-    <button onClick={actions.asyncTwo}> CHAINED ASYNC </button>
+    <button onClick={actions.asyncTwo} > CHAINED ASYNC </button>
     <p>{state.value}</p> 
   </div>
 }
 
-export const App = RDXReact(render, actions )
+export const App = RDXReact(view, actions);
