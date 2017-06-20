@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import {App} from './App';
+import {TodoApp} from './TodoApp';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(App, document.getElementById('root'));
+ReactDOM.render(TodoApp, document.getElementById('root'));
 registerServiceWorker();
