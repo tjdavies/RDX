@@ -25,7 +25,7 @@ Are where all the untidy side effects and async stuff takes place. They recive t
 
 #### Simple app
 
-```javascript
+```jsx
 const actions = {
   initialise: a => a.map(s => ({value:1})),
   increment: a => a.map(s => ({ value:s.value + 1 })),
@@ -45,7 +45,7 @@ export const App = RDXReact(render, actions )
 
 #### Handling async
 
-```javascript
+```jsx
 const AsyncSideEffect = (state, actions) => {
   return Delay(1000).then( actions.increment )
 }
