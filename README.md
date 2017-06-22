@@ -3,7 +3,7 @@
 
 ### Why?
 
-* Striped down simplicty
+* Stripped down simplicty
 * Pure functional composable code
 * No boilerplate
 * Async is built in
