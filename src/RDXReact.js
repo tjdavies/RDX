@@ -22,4 +22,3 @@ class RDXClass extends Component {
 export default function RDXReact(render, actions) {
   return <RDXClass actions={actions} render={render} />;
 }
-
