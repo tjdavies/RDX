@@ -1,6 +1,5 @@
 # RDX 
 
-
 ### Why?
 
 * Stripped down simplicty
@@ -8,20 +7,6 @@
 * No boilerplate
 * Async is built in
 * Easy to unit test
-
-### Architecture
-
-There are just two concepts in RDX actions and effects. Both are functions.
-
-![RDX](http://i.imgur.com/Ibyvi6A.png?3)
-
-#### Actions
-
-Are pure functions that take the current app state and update it much like reducers in redux. However they differ slighlty in that they can also return a list of side effects to be run. This is a crutial diffrence as it means its easy follow that when Action A happens it will change the state like this AND trigger these side effects. As these functions are pure unit testing them is easy. These functions will make up the core of your app.
-
-#### Effects
-
-Are where all the untidy side effects and async stuff takes place. They recive the app state and the actions which they can call. Unlike redux there is no need to dipatch an 'Action' object you can just call the action function direclty. Actions should not really contain any app logic. And here is the blow you mind bit. The view is just a special kind of effect that is called every action.
 
 #### Simple app
 
@@ -55,6 +40,20 @@ const actions = {
   async: a => a.addEffect(AsyncSideEffect)
 }
 ```
+
+### Architecture
+
+There are just two concepts in RDX actions and effects. Both are functions.
+
+![RDX](http://i.imgur.com/Ibyvi6A.png?3)
+
+#### Actions
+
+Are pure functions that take the current app state and update it much like reducers in redux. However they differ slighlty in that they can also return a list of side effects to be run. This is a crutial diffrence as it means its easy follow that when Action A happens it will change the state like this AND trigger these side effects. As these functions are pure unit testing them is easy. These functions will make up the core of your app.
+
+#### Effects
+
+Are where all the untidy side effects and async stuff takes place. They recive the app state and the actions which they can call. Unlike redux there is no need to dipatch an 'Action' object you can just call the action function direclty. Actions should not really contain any app logic. And here is the blow your mind bit. The view is just a special kind of effect that is called every action.
 
 #### Wait! 
 
