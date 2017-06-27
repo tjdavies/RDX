@@ -3,7 +3,6 @@ export default function RDX(rawActions, update){
     let actions = {};
 
     const makeAction = (a,name) => (...args) => {
-      log(name)
       const response = a(Action({ state, effects: [] }),...args).fold();
       state = response.state
       response.effects.map(e => e(response.state, actions));
