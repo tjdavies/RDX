@@ -20,7 +20,7 @@ const actions = {
 const render = (state, actions) => {
   return <div>
     <button onClick={actions.increment} > UP </button>
-    <button onClick={actions.increment} > DOWN </button>
+    <button onClick={actions.decrement} > DOWN </button>
     <p>{state.value}</p> 
   </div>
 }
