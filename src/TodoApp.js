@@ -2,35 +2,34 @@ import view from './View';
 import RDXReact from './RDXReact';
 
 //reducer
-const init = s => ({
+const init = state => ({
   idCount: 0,
   todos:[],
   filter: "SHOW_ALL"
 })
 
-const addTodo = text => s => ({
-  idCount: s.idCount + 1,
-  todos: [...s.todos, {id:s.idCount + 1, text:text, completed:false} ]
+const addTodo = text => state => ({
+  idCount: state.idCount + 1,
+  todos: [...state.todos, 
+    {
+      id:state.idCount + 1,
+      text:text,
+      completed:false
+    }
+  ]
 })
 
-const compleatTodo = id => s => ({
-  ...s,
-  todos: s.todos.map( markCompleated(id) )
+const compleatTodo = id => state => ({
+  ...state,
+  todos: state.todos.map( todo => 
+    (todo.id === id) ? {...todo, completed: !todo.completed} : todo
+  )
 })
 
-const markCompleated = id => t => {
-  if(t.id === id){
-    t.completed = !t.completed ;
-  }
-  return t;
-}
-
-const setFilter = filter => s => ({
-  ...s,
+const setFilter = filter => state => ({
+  ...state,
   filter: filter
 })
-
-
 
 //actions
 const actions = {
