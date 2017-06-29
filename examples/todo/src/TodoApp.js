@@ -1,5 +1,5 @@
 import view from './View';
-import RDXReact from './RDXReact';
+import RDXReact from 'rdx';
 
 //reducer
 const init = state => ({
