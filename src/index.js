@@ -1,5 +1,5 @@
 import RDX,{log} from './RDX';
-import {RDXReact} from './RDXReact';
+import RDXReact from './RDXReact';
 
 export{
     RDX,

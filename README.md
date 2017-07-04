@@ -53,7 +53,7 @@ Are pure functions that take the current app state and update it much like reduc
 
 #### Effects
 
-Are where all the untidy side effects and async stuff takes place. They recive the app state and the actions which they can call. Unlike redux there is no need to dipatch an 'Action' object you can just call the action function direclty. Actions should not really contain any app logic. And here is the blow your mind bit. The view is just a special kind of effect that is called every action.
+Are where all the untidy side effects and async stuff takes place. They recive the app state and the actions which they can call. Unlike redux there is no need to dipatch an 'Action' object you can just call the action functions direclty. Effects should not really contain any app logic. The view is just a special kind of effect that is called every action.
 
 #### Wait! 
 
@@ -66,6 +66,15 @@ actions are effectivly functions that take this form
 ```
 
 In its raw form working with this structure is a bit clumsy. Wrapping it in a helper takes the pain away but still keeps it pure. 
+
+- map: accepts a function that updates the app state
+- addEffect: adds an effect to the list of effects
+- chain: composes actions together
+- log: prints the current state and effects list
+- fold: returns the raw data. (only really needed for testing)
+
+
+
 
 ## Examples
 
