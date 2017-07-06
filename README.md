@@ -1,4 +1,4 @@
-# RDX 
+# Copal
 
 ### Why?
 
@@ -25,7 +25,7 @@ const render = (state, actions) => {
   </div>
 }
 
-export const App = RDXReact(render, actions )
+export const App = copal(render, actions )
 ```
 
 #### Handling async
@@ -42,10 +42,11 @@ const actions = {
 ```
 
 ### Architecture
+Copal is much like Redux only simpler. All the examples here use React to render but in therory its not limited to just react.
 
-There are just two concepts in RDX actions and effects. Both are functions.
+There are just two concepts in Copal actions and effects. Both are functions.
 
-![RDX](http://i.imgur.com/Ibyvi6A.png?3)
+![Copal](http://i.imgur.com/Ibyvi6A.png?3)
 
 #### Actions
 
@@ -79,8 +80,8 @@ In its raw form working with this structure is a bit clumsy. Wrapping it in a he
 ## Examples
 
 ##### Counter 
-[![Edit RDX - counter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mw7m43Nk3)
+[![Edit Copal - counter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mw7m43Nk3)
 
 ##### Reddit client 
-[![Edit RDX - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/L9jl809yp)
+[![Edit Copal - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/L9jl809yp)
 
