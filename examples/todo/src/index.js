@@ -1,5 +1,8 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import {TodoApp} from './TodoApp';
+import view from './view';
+import copal from 'copal';
+import * as actions from './actions';
+
+export const TodoApp = copal(view, actions);
 
 ReactDOM.render(TodoApp, document.getElementById('root'));

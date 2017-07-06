@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import RDX from './RDX';
+import {createStore} from './copal';
 
-class RDXClass extends Component {
+class CopalComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.actions = RDX(props.actions, s => this.setState(s) );
+    this.actions = createStore(props.actions, s => this.setState(s) );
   }
 
   componentWillMount() {
@@ -19,6 +19,6 @@ class RDXClass extends Component {
   }
 }
 
-export default function RDXReact(render, actions) {
-  return <RDXClass actions={actions} render={render} />;
+export default function copal(render, actions) {
+  return <CopalComponent actions={actions} render={render} />;
 }

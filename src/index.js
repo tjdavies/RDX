@@ -1,8 +1,9 @@
-import RDX,{log} from './RDX';
-import RDXReact from './RDXReact';
+import {createStore, log} from './copal';
+import copal from './copalReact';
+
+export default copal;
 
 export{
-    RDX,
-    RDXReact,
+    createStore,
     log
 }
