@@ -3,7 +3,7 @@ export function createStore(rawActions, update){
     let actions = {};
 
     const makeAction = (a,name) => (...args) => {
-      const response = a(action({ state, effects: [] }),...args).fold();
+      const response = a(action({ state, effects: [] },...args),...args).fold();
       state = response.state
       response.effects.map(e => e(response.state, actions));
       update(state, actions)
@@ -15,11 +15,11 @@ export function createStore(rawActions, update){
     return actions;
 }
 
-function action(s) {
+function action(s,...args) {
   return {
-    map: f => action({ effects: s.effects, state: f(s.state) }),
+    map: f => action({ effects: s.effects, state: f(s.state,...args) }),
     addEffect: e => action({ effects: [...s.effects, e], state: s.state }),
-    chain: (a, ...args) => a(action(s), ...args),
+    chain: a => a(action(s), ...args),
     log: () => action(log(s)),
     fold: () => s,
   };

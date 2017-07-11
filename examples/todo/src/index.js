@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-import view from './view';
 import copal from 'copal';
-import * as actions from './actions';
+import * as actions from './actions/index';
+import view from './view/index';
 
 export const TodoApp = copal(view, actions);
 
