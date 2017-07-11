@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "copal": "file:../../"
+    "copal": "copal"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
