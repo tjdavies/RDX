@@ -83,5 +83,5 @@ In its raw form working with this structure is a bit clumsy. Wrapping it in a he
 [![Edit Copal - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/tjdavies/copal/tree/master/examples/todo)
 
 ##### Reddit client 
-[![Edit Copal - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/L9jl809yp)
+[![Edit Copal - reddit](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/tjdavies/copal/tree/master/examples/reddit)
 
