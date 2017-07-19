@@ -17,7 +17,7 @@ export function createStore(rawActions, update){
 
 function action(s,...args) {
   return {
-    map: f => action({ effects: s.effects, state: f(s.state,...args) }),
+    map: f => action({ effects: s.effects, state: f(s.state, ...args) }),
     addEffect: e => action({ effects: [...s.effects, e], state: s.state }),
     chain: a => a(action(s), ...args),
     log: () => action(log(s)),
