@@ -8,7 +8,7 @@ const ERROR = {
   type: states.ERROR
 } 
 
-export function initalise(state) {
+export function initialize(state) {
   return {
     reddits: ['reactjs', 'frontend', 'sdfsadfkl'],
     selectedReddit: 'reactjs',
