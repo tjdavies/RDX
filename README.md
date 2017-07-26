@@ -79,6 +79,9 @@ In its raw form working with this structure is a bit clumsy. Wrapping it in a he
 
 ## Examples
 
+##### Counter 
+[![Edit Copal - counter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/tjdavies/copal/tree/master/examples/counter)
+
 ##### Todo 
 [![Edit Copal - todo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/tjdavies/copal/tree/master/examples/todo)
 
