@@ -26,8 +26,8 @@ class CopalComponent extends Component {
   }
 
   componentWillMount() {
-    if (this.store.actions['initalise']){
-      this.store.actions['initalise']();
+    if (this.store.actions['initialize']){
+      this.store.actions['initialize']();
     }
   }
 

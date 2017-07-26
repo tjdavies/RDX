@@ -1,7 +1,7 @@
 import * as reducers from "./reducers"
 import {loadReddit} from "./effects"
 
-export function initalise(a){
+export function initialize(a){
   return a.map(reducers.initalise)
     .chain(refresh)
 }

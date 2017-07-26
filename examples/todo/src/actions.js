@@ -2,7 +2,7 @@ import * as reducers from "./reducers"
 
 // look at the reddit example to see how more complex actions add side effects and can be composed
 
-export function initalise(a){
+export function initialize(a){
   return a.map(reducers.init)
 }
 

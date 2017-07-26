@@ -11,7 +11,7 @@ export const TodoApp = copal(
         </div>
     ,  
     {
-        initalise: a => a.map( s => ({value: 0})),
+        initialize: a => a.map( s => ({value: 0})),
         increment: a => a.map( s => ({value: s.value + 1})),
         decrement: a => a.map( s => ({value: s.value - 1})),
     }
